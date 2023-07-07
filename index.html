@@ -21,7 +21,6 @@
 <body>
   <div id="content">
     <h1 id="black-card"></h1>
-    <h1 id="white-card"></h1>
   </div>
 
   <script>
@@ -41,11 +40,10 @@
         var whiteCard = data.white[whiteIndex];
 
         // Replace the underscore placeholder with the white card answer
-        blackCard = blackCard.replace("_", whiteCard);
+        blackCard = blackCard.replace("_", whiteCard.charAt(0).toLowerCase() + whiteCard.slice(1)).replace(".", "");
 
         // Display the modified black card text
         $("#black-card").text(blackCard);
-        $("#white-card").text(whiteCard);
       });
     });
   </script>
