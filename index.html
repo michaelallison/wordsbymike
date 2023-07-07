@@ -1,42 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Google Docs Folder</title>
-    <script>
-        // Google Docs folder ID
-        var folderId = "1QOGLoCB-IwxGn956ke0_Y7UINjHiTeeY";
-
-        // Function to fetch and display the list of Google Docs in the folder
-        function getGoogleDocs() {
-            var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&fields=files(name,id)";
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    var docs = data.files;
-                    var list = document.getElementById("docList");
-
-                    // Clear previous list items
-                    list.innerHTML = "";
-
-                    // Create list items for each document
-                    docs.forEach(doc => {
-                        var listItem = document.createElement("li");
-                        var link = document.createElement("a");
-                        link.href = "https://drive.google.com/drive/folders/" + doc.id;
-                        link.textContent = doc.name;
-                        listItem.appendChild(link);
-                        list.appendChild(listItem);
-                    });
-                })
-                .catch(error => console.error("Error fetching Google Docs:", error));
-        }
-
-        // Call the function when the page loads
-        window.addEventListener("load", getGoogleDocs);
-    </script>
+  <title>Random White Card</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>Google Docs Folder</h1>
-    <ul id="docList"></ul>
+  <h1>Random White Card</h1>
+  <div id="white-card"></div>
+
+  <script>
+    $(document).ready(function() {
+      // Fetch the JSON file
+      $.getJSON("cah-cards-compact.json", function(data) {
+        // Generate a random index for the white card
+        var whiteIndex = Math.floor(Math.random() * data.white.length);
+
+        // Display the random white card
+        var whiteCard = data.white[whiteIndex];
+        $("#white-card").text(whiteCard);
+      });
+    });
+  </script>
 </body>
 </html>
