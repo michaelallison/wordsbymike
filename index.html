@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Random White Card</title>
+  <title>Random Cards</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <h1>Random White Card</h1>
+  <h1>Random Cards</h1>
   <div id="white-card"></div>
+  <div id="black-card"></div>
 
   <script>
     $(document).ready(function() {
@@ -18,6 +19,13 @@
         // Display the random white card
         var whiteCard = data.white[whiteIndex];
         $("#white-card").text(whiteCard);
+
+        // Generate a random index for the black card
+        var blackIndex = Math.floor(Math.random() * data.black.length);
+
+        // Display the random black card
+        var blackCard = data.black[blackIndex].text;
+        $("#black-card").text(blackCard);
       });
     });
   </script>
