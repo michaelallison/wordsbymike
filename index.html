@@ -33,13 +33,18 @@
 
         // Display the random black card
         var blackCard = data.black[blackIndex].text;
-        $("#black-card").text(blackCard);
 
         // Generate a random index for the white card
         var whiteIndex = Math.floor(Math.random() * data.white.length);
 
-        // Display the random white card
+        // Get the random white card
         var whiteCard = data.white[whiteIndex];
+
+        // Replace the underscore placeholder with the white card answer
+        blackCard = blackCard.replace("_", whiteCard);
+
+        // Display the modified black card text
+        $("#black-card").text(blackCard);
         $("#white-card").text(whiteCard);
       });
     });
